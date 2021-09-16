@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+            
+<includeAll path="database/trigger"/>
+<includeAll path="database/view" />    
+<includeAll path="database/type" />     
+   <!--PACKAGES -->  
+
+   <changeSet id="CONST_PKG" author="rgrzegorczyk" runOnChange="true">
+       <comment>Const_pkg must go first!</comment>
+    <sqlFile splitStatements="false" path="database/package/CONST_PKG.pks" encoding="UTF-8"  endDelimiter="\n/" />
+<rollback>
+    DROP PACKAGE CONST_PKG;
+</rollback>
+</changeSet>   
+
+   <changeSet id="APEX_UTIL_PKG" author="rgrzegorczyk" runOnChange="true">
+     <sqlFile splitStatements="false" path="database/package/APEX_UTIL_PKG.pks" encoding="UTF-8"   endDelimiter="\n/"/>
+     <sqlFile splitStatements="false" path="database/package/APEX_UTIL_PKG.pkb" encoding="UTF-8"   endDelimiter="\n/" />
+ <rollback>
+     DROP PACKAGE BODY APEX_UTIL_PKG;
+     DROP PACKAGE APEX_UTIL_PKG;
+ </rollback>
+</changeSet>    
+
+
+
+   <changeSet id="DB_UTIL_PKG" author="rgrzegorczyk" runOnChange="true">
+     <sqlFile splitStatements="false" path="database/package/DB_UTIL_PKG.pks" encoding="UTF-8"  endDelimiter="\n/" />
+     <sqlFile splitStatements="false" path="database/package/DB_UTIL_PKG.pkb" encoding="UTF-8"  endDelimiter="\n/" />
+ <rollback>
+     DROP PACKAGE BODY DB_UTIL_PKG;
+     DROP PACKAGE DB_UTIL_PKG;
+ </rollback>
+</changeSet>   
+
+   <changeSet id="EXPENSES_PKG" author="rgrzegorczyk" runOnChange="true">
+     <sqlFile splitStatements="false" path="database/package/EXPENSES_PKG.pks" encoding="UTF-8"  endDelimiter="\n/" />
+     <sqlFile splitStatements="false" path="database/package/EXPENSES_PKG.pkb" encoding="UTF-8"  endDelimiter="\n/" />
+ <rollback>
+     DROP PACKAGE BODY EXPENSES_PKG;
+     DROP PACKAGE EXPENSES_PKG;
+ </rollback>
+</changeSet>   
+
+   <changeSet id="HANDLE_PKG" author="rgrzegorczyk" runOnChange="true">
+     <sqlFile splitStatements="false" path="database/package/HANDLE_PKG.pks" encoding="UTF-8"   endDelimiter="\n/"/>
+     <sqlFile splitStatements="false" path="database/package/HANDLE_PKG.pkb" encoding="UTF-8"   endDelimiter="\n/"/>
+ <rollback>
+     DROP PACKAGE BODY HANDLE_PKG;
+     DROP PACKAGE HANDLE_PKG;
+ </rollback>
+</changeSet>   
+
+   <changeSet id="PERIODS_CONF_PKG" author="rgrzegorczyk" runOnChange="true">
+     <sqlFile splitStatements="false" path="database/package/PERIODS_CONF_PKG.pks" encoding="UTF-8"   endDelimiter="\n/"/>
+     <sqlFile splitStatements="false" path="database/package/PERIODS_CONF_PKG.pkb" encoding="UTF-8"   endDelimiter="\n/"/>
+ <rollback>
+     DROP PACKAGE BODY PERIODS_CONF_PKG;
+     DROP PACKAGE PERIODS_CONF_PKG;
+ </rollback>
+</changeSet>   
+
+</databaseChangeLog>

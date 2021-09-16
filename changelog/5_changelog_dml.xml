@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+            
+              <changeSet  author="RGRZEGORCZYK"  id="insert_periods_conf"  failOnError="true">
+                <comment>Insert into periods table</comment>  
+                  <sqlFile  dbms="oracle"
+                            encoding="UTF-8"
+                            path="database/dml/periods_conf_ins.sql"
+                            splitStatements="true"
+                            stripComments="false"/>
+                  <rollback>
+                   TRUNCATE TABLE PERIODS_CONF;
+                  </rollback>  
+              </changeSet>   
+              
+              <changeSet  author="RGRZEGORCZYK"  id="demo"  failOnError="true">
+                <comment>Example data</comment>  
+                  <sqlFile  dbms="oracle"
+                            encoding="UTF-8"
+                            path="database/dml/demo.sql"
+                            splitStatements="true"
+                            stripComments="false"/>
+                  <rollback>
+                    TRUNCATE TABLE expenses;
+                    TRUNCATE TABLE expense_types;
+                    TRUNCATE TABLE expense_groups;
+                  </rollback>  
+              </changeSet>    
+              
+</databaseChangeLog>

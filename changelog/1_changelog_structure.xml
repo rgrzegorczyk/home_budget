@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+            <includeAll path="/database/table"/> 
+            
+            <changeSet  author="RGRZEGORCZYK"  id="logger" runOnChange="true" failOnError="false">
+                <sqlFile  dbms="oracle"
+                          encoding="UTF-8"
+                          endDelimiter="\n/"
+                          path="database/logger/logger_install.sql"
+                          splitStatements="false"
+                          stripComments="false"/>
+                          
+               <rollback>
+                <sqlFile  dbms="oracle"
+                          encoding="UTF-8"
+                          endDelimiter="\n/"
+                          path="database/logger/drop-logger.sql"
+                          splitStatements="false"
+                          stripComments="false"/>
+                        </rollback>  
+            </changeSet>  
+
+            
+            
+</databaseChangeLog>
